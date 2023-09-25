@@ -72,35 +72,44 @@ class _HomeState extends State<Home> {
         title: const Text(
           'YTS',
         ),
-        actions: [
-          IconButton(
-            onPressed: () {
-              _runFilter(_searchController.text);
-            },
-            icon: const Icon(Icons.search),
-          ),
-        ],
+        // actions: [
+        //   IconButton(
+        //     onPressed: () {
+        //       _runFilter(_searchController.text);
+        //     },
+        //     icon: const Icon(Icons.search),
+        //   ),
+        // ],
       ),
       body: Column(
         children: [
           Padding(
             padding: const EdgeInsets.all(16.0),
-            child: TextField(
-              controller: _searchController,
-              decoration: const InputDecoration(
-                contentPadding: EdgeInsets.all(0),
-                prefixIcon: Icon(
-                  Icons.search,
-                  color: Colors.black,
-                  size: 20,
+            child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 15),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child: TextField(
+                style: const TextStyle(color: Colors.black),
+                controller: _searchController,
+                onChanged: (value) => _runFilter(_searchController.text),
+                decoration: const InputDecoration(
+                  contentPadding: EdgeInsets.all(0),
+                  prefixIcon: Icon(
+                    Icons.search,
+                    color: Colors.black,
+                    size: 20,
+                  ),
+                  prefixIconConstraints: BoxConstraints(
+                    maxHeight: 20,
+                    minWidth: 25,
+                  ),
+                  border: InputBorder.none,
+                  hintText: 'Search',
+                  hintStyle: TextStyle(color: Colors.grey),
                 ),
-                prefixIconConstraints: BoxConstraints(
-                  maxHeight: 20,
-                  minWidth: 25,
-                ),
-                border: InputBorder.none,
-                hintText: 'Search',
-                hintStyle: TextStyle(color: Colors.grey),
               ),
             ),
           ),
